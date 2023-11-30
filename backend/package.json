@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=development nodemon index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build:ui": "rm -rf dist && cd ../frontend && npm run build && cp -r dist ../backend",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "logs:prod": "fly logs",
-    "test": "NODE_ENV=test jest --verbose --runInBand",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "lint": "eslint ."
   },
   "author": "",
@@ -21,6 +21,7 @@
     "mongoose": "^6.8.4"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^8.32.0",
     "nodemon": "^2.0.20"
   },
