@@ -71,6 +71,8 @@ const App = () => {
       const user = await loginService.login({
         username, password
       })
+
+      noteService.setToken(user.token)
       setUser(user)
       setUsername('')
       setPassword('')
@@ -125,7 +127,7 @@ const App = () => {
       {user &&
         <div>
           <p>{user.name} logged in</p>
-          noteForm()
+          {noteForm()}
         </div>
       }
 
